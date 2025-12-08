@@ -1,16 +1,15 @@
 # Event-B Models for BDI Agents in the CAN Language (with Pre-generated ProB Animation)
 
-This repository contains the Event-B and ProB artefacts accompanying the paper:
-
+This repository contains all Event-B and ProB artefacts that are mentioned/used/developed in the following paper:
 
 
 > *Algebraic Modelling and Proof-based Analysis of BDI Agents with Event-B*  
 > Xu et al., submitted to JAIR
 
-The artefact consists of:
+The artefacta consist of:
 
 1. **Stack theory example** – a minimal Event-B theory illustrating polymorphic datatypes and operators, and their use in the Event-B formalism.
-2. **BDI models** – Event-B projects containing the core BDI encoding and the robotic cleaning case study models.
+2. **BDI models** – Event-B projects containing the core BDI encoding and the robotic cleaning case study models, and its refined version for ProB animation. 
 3. **Pre-generated animation (HTML)** – a browser-based animation of the robotic cleaning model, so users can inspect behaviour without installing Rodin or ProB.
 
 All Event-B projects are provided as Rodin project archives (`*.zip`) or Eclipse-style project folders that can be imported directly into the Rodin Platform.
@@ -25,6 +24,7 @@ All Event-B projects are provided as Rodin project archives (`*.zip`) or Eclipse
 ├── LICENSE                           # License for this artefact
 ├── StackProject.zip                  # Stack theory example (Event-B project)
 ├── JAIR_Final_models.zip             # Final BDI encoding and case-study model (Event-B projects)
+├── JAIR_Final_modelsProB.zip         # Finite-state and refined BDI encoding and case-study model (Event-B projects)
 └── AnimationRobotCleaning.tar.gz     # Pre-generated HTML animation of the robotic cleaning model
 
 ```
@@ -42,10 +42,10 @@ AnimationHTML/
 └── waste.png
 ```
 
-If you only want to see the behaviour of the robotic cleaning agent, you can skip Rodin installation below and just open the `BDISemanticsRoboticCleaning_mch.html` with any browser to see the animation. 
+If you only want to see the behaviour of the robotic cleaning agent, you can skip Rodin installation steps below and just open the `BDISemanticsRoboticCleaning_mch.html` in any browser to view the animation. This animation also incorporates an SVG visualisation that are used for presenting the running example of the robotic cleaning scenario in the paper for extra friendliness. 
 
 
-## Using the Event-B models (Rodin)
+## Using the Event-B models (Rodin and ProB)
 
 To inspect and run the Event-B models (not needed for just viewing the HTML animation), you need to do the following:
 
@@ -66,7 +66,7 @@ In Rodin:
 1. Go to **Help → Install New Software…**.
 2. In **Work with**, select the main Rodin update site  
    `http://rodin-b-sharp.sourceforge.net/updates`.
-   (different versions of Rodin may have different naming or multiple listings for this update site)
+   (Different versions of Rodin may have different naming or multiple listings for this update site)
 3. Under the category **Modelling Extensions**, select the **Theory** plug-in (or equivalent).
 4. Complete the installation and restart Rodin.
 
@@ -84,10 +84,11 @@ In Rodin:
 3. Select the **ProB** plug-in and install it.
 4. Restart Rodin.
 
-After restarting Rodin, you should see **ProB** entries in the context menu when you right-click on an Event-B machine or context (e.g. “Start Animation / Model Checking”). We note you cannot animate the model in `JAIR_Final_models.zip ` as they are not finite-state models (Prob will time out!). 
+After restarting Rodin, you should see **ProB** entries in the context menu when you right-click on an Event-B machine or context (e.g. “Start Animation / Model Checking”). We note you cannot animate the model in `JAIR_Final_models.zip ` as they are not finite-state models (ProB will time out!). 
 
-But you can animate the example in stack theory if you are interested in seeing how it works. 
+Howeverm you can animate the example in stack theory if you are interested in seeing how it works and ProB-version of the encoding. 
 To do so, right click `StackM` file in `StackProject` folder, and select `Start Animation/Model Checking`. 
+Again, you encounter any ProB animation issue, please reach to us as making ProB work can be tricky. 
 
 ---
 
@@ -95,12 +96,20 @@ To do so, right click `StackM` file in `StackProject` folder, and select `Start 
 
 > You do **not** need to unzip `StackProject.zip` or `JAIR_Final_models.zip`. Rodin can import these archives directly.
 
-In Rodin, please go to **File** → **Open Projects from File System**, click **Archive**, then select, for example, `StackProject.zip` from this repository. The project will appear in the **Event-B Explorer**. You can then open the theory, context, and machine. 
+In Rodin, please go to **File** → **Open Projects from File System**, click **Archive**, then select, for example, `StackProject.zip` from this repository. The project will appear in the **Event-B Explorer**. You can then open the theory, context, and machine files as usual. 
+
+
+### 5. Inspect proofs in Rodin
+
+To inspect the proofs (especially the invariant safety properties for the running example) in Rodin, for example, first open the project `BDIAgentRobotCleaningModels` in the Event-B Explorer, expand the machine `BDISemantics` node, and then **Proof Obligations** view should now appear. This view lists all proof obligations (POs) generated from `BDISemantics`, including invariant preservation together with their status (proved, undischarged, pending). For example, green icons indicates a PO is proved. 
+
+To inspect one in detail, double-click a PO to switch to the *Proving* perspective, where Rodin shows a proof tree and the applied rules. To enter the *Proving* perspective, please go to  **Window → Perspective → Open Perspective → Proving**. In the proving perspective, you can expand the proof tree to see how the invariant follows from the event’s guards, actions, and hypotheses, and you can replay the existing proofs. All proofs needed for e.g. the paper’s safety and faithfulness claims are already discharged; inspection is read-only unless you choose to change them.
+
 
 
 ## Reproducing the paper’s results
 
-The artefact supports the following tasks:
+The artefacts support the following tasks:
 
 1. Inspecting the formal encoding of the BDI/CAN language:
    * BeliefTheory and BDITheoryProject provide the underlying theories for encoding BDI syntax and semantics.
@@ -111,6 +120,7 @@ The artefact supports the following tasks:
 
 3. Exploring the case study behaviour:
    * Via the pre-generated HTML animation in AnimationRobotCleaning.tar.gz (no toolchain required).
+   * Via the model in the `JAIR_Final_modelsProB.zip`.
 
 
 ## License
@@ -120,7 +130,7 @@ The contents of this repository (models, HTML animation, and documentation) are 
 
 ## Contact and issues
 
-If you encounter problems importing, animating, or inspecting the models or the HTML animation, please open an issue in this repository or contact:
+If you encounter problems importing, animating, or inspecting the models or the HTML animation, please open an issue in this repository or directly contact one of the following:
 
 **Peter Rivière** – <priviere@jaist.ac.jp>  
 
