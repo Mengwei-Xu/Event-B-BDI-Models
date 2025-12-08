@@ -86,9 +86,9 @@ In Rodin:
 
 After restarting Rodin, you should see **ProB** entries in the context menu when you right-click on an Event-B machine or context (e.g. “Start Animation / Model Checking”). We note you cannot animate the model in `JAIR_Final_models.zip ` as they are not finite-state models (ProB will time out!). 
 
-Howeverm you can animate the example in stack theory if you are interested in seeing how it works and ProB-version of the encoding. 
-To do so, right click `StackM` file in `StackProject` folder, and select `Start Animation/Model Checking`. 
-Again, you encounter any ProB animation issue, please reach to us as making ProB work can be tricky. 
+However, you can animate the example in stack theory or ProB-version of the BDI encoding, if you are interested in seeing how ProB works. 
+To do so, for example, in stack theory, right click `StackM` file in `StackProject` folder, and select `Start Animation/Model Checking`. 
+Again, if you encounter any ProB animation issue, please reach to us as making ProB work is not always straighforward. 
 
 ---
 
@@ -101,9 +101,9 @@ In Rodin, please go to **File** → **Open Projects from File System**, click **
 
 ### 5. Inspect proofs in Rodin
 
-To inspect the proofs (especially the invariant safety properties for the running example) in Rodin, for example, first open the project `BDIAgentRobotCleaningModels` in the Event-B Explorer, expand the machine `BDISemantics` node, and then **Proof Obligations** view should now appear. This view lists all proof obligations (POs) generated from `BDISemantics`, including invariant preservation together with their status (proved, undischarged, pending). For example, green icons indicates a PO is proved. 
+To inspect the proofs (especially the invariant safety properties for the running example) in Rodin, for example, first open the project `BDIAgentRobotCleaningModels` in the Event-B Explorer, expand the machine `BDISemantics` node, and then **Proof Obligations** view should now appear. This view lists all proof obligations (POs) generated from `BDISemantics`, including invariant preservation together with their status (proved, undischarged, pending). For example, green icon indicates a PO is proved. 
 
-To inspect one in detail, double-click a PO to switch to the *Proving* perspective, where Rodin shows a proof tree and the applied rules. To enter the *Proving* perspective, please go to  **Window → Perspective → Open Perspective → Proving**. In the proving perspective, you can expand the proof tree to see how the invariant follows from the event’s guards, actions, and hypotheses, and you can replay the existing proofs. All proofs needed for e.g. the paper’s safety and faithfulness claims are already discharged; inspection is read-only unless you choose to change them.
+To inspect one PO in detail, double-click a PO to switch to the *Proving* perspective, where Rodin shows a proof tree and the applied proving rules. To enter the *Proving* perspective, please go to  **Window → Perspective → Open Perspective → Proving**. In the proving perspective, you can expand the proof tree to see how the invariant follows from the event’s guards, actions, and hypotheses, and you can replay the existing proofs. All proofs needed for e.g. the paper’s safety and faithfulness claims are already discharged; inspection is read-only unless you choose to change them.
 
 
 
@@ -111,14 +111,14 @@ To inspect one in detail, double-click a PO to switch to the *Proving* perspecti
 
 The artefacts support the following tasks:
 
-1. Inspecting the formal encoding of the BDI/CAN language:
+1. Inspecting the formal encoding of the BDI agents in CAN language:
    * BeliefTheory and BDITheoryProject provide the underlying theories for encoding BDI syntax and semantics.
 
 2. Checking faithfulness properties via Rodin proof obligations:
    * The structure of the encoding in data types and operators (totality, sort-disjointness, injectivity).
    * Semantic invariants and preservation proofs available in the **Proof Obligations** view in Rodin (displayed as proof trees).
 
-3. Exploring the case study behaviour:
+3. Exploring the case study behaviour through animation:
    * Via the pre-generated HTML animation in AnimationRobotCleaning.tar.gz (no toolchain required).
    * Via the model in the `JAIR_Final_modelsProB.zip`.
 
@@ -130,7 +130,7 @@ The contents of this repository (models, HTML animation, and documentation) are 
 
 ## Contact and issues
 
-If you encounter problems importing, animating, or inspecting the models or the HTML animation, please open an issue in this repository or directly contact one of the following:
+If you encounter problems importing, animating, or inspecting the models or the HTML animation, please directly contact one of the following:
 
 **Peter Rivière** – <priviere@jaist.ac.jp>  
 
