@@ -6,7 +6,7 @@ This repository contains all Event-B and ProB artefacts that are mentioned/used/
 > *Algebraic Modelling and Proof-based Analysis of BDI Agents with Event-B*  
 > Xu et al., submitted to JAIR
 
-The artefacta consist of:
+The artefacts consist of:
 
 1. **Stack theory example** – a minimal Event-B theory illustrating polymorphic datatypes and operators, and their use in the Event-B formalism.
 2. **BDI models** – Event-B projects containing the core BDI encoding and the robotic cleaning case study models, and its refined version for ProB animation. 
